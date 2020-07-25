@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
       child = CustomDrawer(child: child);
     }
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'ChatApp',
       theme: ThemeData(
         primaryColor: Colors.teal,

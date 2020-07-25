@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomGuitarDrawer extends StatefulWidget {
   final Widget child;
@@ -162,23 +163,23 @@ class MyDrawer extends StatelessWidget {
                 ),
                 SizedBox(height: 75),
                 ListTile(
-                  leading: Icon(Icons.message),
+                  leading: FaIcon(FontAwesomeIcons.envelopeOpenText),
                   title: Text('Messages'),
                 ),
                 ListTile(
-                  leading: Icon(Icons.person_pin),
+                  leading: FaIcon(FontAwesomeIcons.userCircle),
                   title: Text('Profile'),
                 ),
                 ListTile(
-                  leading: Icon(Icons.stars),
+                  leading: FaIcon(FontAwesomeIcons.star),
                   title: Text('Favourites'),
                 ),
                 ListTile(
-                  leading: Icon(Icons.place),
+                  leading: FaIcon(FontAwesomeIcons.mapMarkedAlt),
                   title: Text('Map'),
                 ),
                 ListTile(
-                  leading: Icon(Icons.settings),
+                  leading: FaIcon(FontAwesomeIcons.cog),
                   title: Text('Settings'),
                 ),
               ],
