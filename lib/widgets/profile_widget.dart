@@ -6,8 +6,27 @@ class Profile extends StatelessWidget {
   const Profile({Key key, this.profileModel}) : super(key: key);
   @required
   final ProfileModel profileModel;
+  Widget buildProfileListView(BuildContext context, List<Widget> profileList) {
+    return ListView.builder(
+        itemCount: profileList.length,
+        itemBuilder: ((BuildContext context, int i) {
+          return profileList[i];
+        }));
+  }
+
   @override
   Widget build(BuildContext context) {
+    final List<Widget> profileList = [
+      buildCardBasicStats(context, profileModel),
+      buildCardIAm(context, profileModel),
+      buildCardIAmInto(context, profileModel),
+      buildCardIAmOpenTo(context, profileModel),
+      buildCardSexAndSafety(context, profileModel),
+      buildCardWhatIDo(context, profileModel),
+      buildCardWhatImLookingFor(context, profileModel),
+      buildCardActivitiesAndInterests(context, profileModel),
+      buildCardWhereILive(context, profileModel),
+    ];
     var screenSize = MediaQuery.of(context).size;
     return Container(
       //clipBehavior: Clip.antiAlias,
@@ -15,16 +34,7 @@ class Profile extends StatelessWidget {
         width: screenSize.width * .9,
         height: screenSize.height * .9,
       ),
-      child: Column(
-        children: [
-          buildCardBasicStats(context, profileModel),
-          buildCardIAm(context, profileModel),
-          buildCardIAmInto(context, profileModel),
-          buildCardIAmOpenTo(context, profileModel),
-          buildCardSexAndSafety(context, profileModel),
-          buildCardWhereILive(context, profileModel),
-        ],
-      ),
+      child: buildProfileListView(context, profileList),
     );
   }
 
@@ -152,15 +162,37 @@ class Profile extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
-        child: InkWell(
-          onTap: () => Navigator.pop(context),
-          child: Column(
-            children: <Widget>[
-              Text(
-                'I Am Into: \n Coming Soon',
-                style: TextStyle(color: Colors.white),
-              ),
-            ],
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: InkWell(
+            onTap: () => Navigator.pop(context),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Text('I am Into: \n',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 24,
+                        )),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      '${profileM.communityInto.communities[0]},     ',
+                    ),
+                    Text(
+                      '${profileM.communityInto.communities[1]},     ',
+                    ),
+                    Text(
+                      '${profileM.communityInto.communities[2]}      ',
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -170,25 +202,45 @@ class Profile extends StatelessWidget {
   Container buildCardIAmOpenTo(BuildContext context, ProfileModel profileM) {
     var screenSize = MediaQuery.of(context).size;
     return Container(
-      width: screenSize.width * .9,
-      child: Card(
+        width: screenSize.width * .9,
+        child: Card(
           semanticContainer: true,
           color: Colors.indigo[200],
           elevation: 8,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          child: InkWell(
-              onTap: () => Navigator.pop(context),
-              child: Column(
-                children: <Widget>[
-                  Text(
-                    'I Am Open To: \n Coming Soon',
-                    style: TextStyle(color: Colors.white),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: InkWell(
+                onTap: () => Navigator.pop(context),
+                child: Column(children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Text('I am Open To: \n',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                          )),
+                    ],
                   ),
-                ],
-              ))),
-    );
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        '${profileM.openTo.openTo[0]},     ',
+                      ),
+                      Text(
+                        '${profileM.openTo.openTo[1]},     ',
+                      ),
+                      Text(
+                        '${profileM.openTo.openTo[2]}      ',
+                      ),
+                    ],
+                  )
+                ])),
+          ),
+        ));
   }
 
   Container buildCardSexAndSafety(BuildContext context, ProfileModel profileM) {
@@ -202,16 +254,41 @@ class Profile extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          child: InkWell(
-              onTap: () => Navigator.pop(context),
-              child: Column(
-                children: <Widget>[
-                  Text(
-                    'Sex And Safety: \n Coming Soon',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ],
-              ))),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: InkWell(
+                onTap: () => Navigator.pop(context),
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          'Sex And Safety: \n',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          '${profileM.sexAndSafety.sexAndSafety[0]},   ',
+                        ),
+                        Text(
+                          '${profileM.sexAndSafety.sexAndSafety[1]},   ',
+                        ),
+                        Text(
+                          '${profileM.sexAndSafety.sexAndSafety[2]}',
+                        ),
+                      ],
+                    ),
+                  ],
+                )),
+          )),
     );
   }
 
@@ -226,16 +303,33 @@ class Profile extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          child: InkWell(
-              onTap: () => Navigator.pop(context),
-              child: Column(
-                children: <Widget>[
-                  Text(
-                    'What I Do: \n Coming Soon',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ],
-              ))),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: InkWell(
+                onTap: () => Navigator.pop(context),
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          'What I do: \n',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          '${profileM.customPersonalInfo.whatIDo}',
+                        ),
+                      ],
+                    )
+                  ],
+                )),
+          )),
     );
   }
 
@@ -251,16 +345,33 @@ class Profile extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          child: InkWell(
-              onTap: () => Navigator.pop(context),
-              child: Column(
-                children: <Widget>[
-                  Text(
-                    'What I am Looking For: \n Coming Soon',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ],
-              ))),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: InkWell(
+                onTap: () => Navigator.pop(context),
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          'What I\'m Looking For: \n',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          '${profileM.customPersonalInfo.whatImLookingFor}',
+                        ),
+                      ],
+                    )
+                  ],
+                )),
+          )),
     );
   }
 
@@ -275,16 +386,75 @@ class Profile extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          child: InkWell(
-              onTap: () => Navigator.pop(context),
-              child: Column(
-                children: <Widget>[
-                  Text(
-                    'Where I Live: \n Coming Soon',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ],
-              ))),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: InkWell(
+                onTap: () => Navigator.pop(context),
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          'Where I Live: \n',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          '${profileM.customPersonalInfo.whereILive}',
+                        ),
+                      ],
+                    )
+                  ],
+                )),
+          )),
+    );
+  }
+
+  Container buildCardActivitiesAndInterests(
+      BuildContext context, ProfileModel profileM) {
+    var screenSize = MediaQuery.of(context).size;
+    return Container(
+      width: screenSize.width * .9,
+      child: Card(
+          semanticContainer: true,
+          color: Colors.indigo[200],
+          elevation: 8,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: InkWell(
+                onTap: () => Navigator.pop(context),
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          'Activities and Interests: \n',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          '${profileM.customPersonalInfo.activitiesAndInterests}',
+                        ),
+                      ],
+                    )
+                  ],
+                )),
+          )),
     );
   }
 }

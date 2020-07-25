@@ -12,36 +12,11 @@ class Nearby extends StatefulWidget {
 
 class _NearbyState extends State<Nearby> {
 //so it runs the code above first
-  @override
-  void initState() {
-    super.initState();
-    //   ProfileHelper.getProfile(loadString().toString());
-    //   ProfileHelper.getMyProfile();
-  }
 
   @override
   Widget build(BuildContext context) {
     //ProfileModel profileModel;
 
-    return Container(child: CustomGridView());
+    return Container(child: Center(child: CustomGridView()));
   }
 }
-
-// Center(
-//             child: FutureBuilder(
-//                 future: DefaultAssetBundle.of(context)
-//                     .loadString('assets/testing_list.json'),
-//                 builder: (context, snapshot) {
-//                   List<ProfileModel> profiles =
-//                       ProfileHelper.parseProfile(snapshot.data.toString());
-
-//                   return ListView.builder(
-//                       itemCount: profiles.length,
-//                       itemBuilder: (BuildContext context, int index) {
-//                         return ListTile(
-//                           title: Text(profileModel.displayName[index]),
-//                           subtitle:
-//                               Text(profileModel.distance.toString()[index]),
-//                         );
-//                       });
-//                 }))

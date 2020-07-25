@@ -8,7 +8,8 @@ class OpenToModel {
 
   OpenToModel({this.openTo});
 
-  factory OpenToModel.fromJson(Map<String, dynamic> json)=>_$OpenToModelFromJson(json); 
+  factory OpenToModel.fromJson(Map<String, dynamic> json) =>
+      _$OpenToModelFromJson(json);
 
-  Map<String,dynamic> toJson() => _$OpenToModelToJson(this);
+  Map<String, dynamic> toJson() => _$OpenToModelToJson(this);
 }

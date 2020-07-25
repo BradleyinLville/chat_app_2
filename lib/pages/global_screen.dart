@@ -13,8 +13,7 @@ class _GlobalState extends State<Global> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Center(
-          child: CustomGridView()), //May substitute for GridVew or similar
+      child: Center(child: CustomGridView()),
     );
   }
 }
