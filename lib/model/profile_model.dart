@@ -11,8 +11,8 @@ import 'sex_and_safety_model.dart';
 
 @JsonSerializable()
 class ProfileModel {
-//class variables  will add a Geolocation variable later
   String displayName;
+  //! Add a method to determine the distance using a geolocation service
   double distance;
   ImageThumbnailModel imageThumbnails;
   bool isOnline;

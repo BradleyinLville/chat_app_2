@@ -11,7 +11,9 @@ class _ChatWidgetState extends State<ChatWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Placeholder(),
+      child: Column(
+        children: <Widget>[Placeholder()],
+      ),
     );
   }
 }
