@@ -1,5 +1,5 @@
+import 'package:chat_app/widgets/read_messages.dart';
 import 'package:flutter/material.dart';
-
 
 //this class is for everything below the TabBar on the Global screen
 
@@ -15,7 +15,7 @@ class _MessagesState extends State<Messages> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.blueGrey[300],
-      child: Center(child: Text('Messages')),
+      child: Center(child: ReadMessages()),
     );
   }
 }

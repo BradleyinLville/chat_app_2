@@ -12,9 +12,11 @@ import 'dart:math';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ListofProfiles {
-  final List<ProfileModel> abstractedDummyList = generateDummyList();
+  static int numberOfProfiles;
+  final List<ProfileModel> abstractedDummyList =
+      generateDummyList(numberOfProfiles);
 
-  static List<ProfileModel> generateDummyList() {
+  static List<ProfileModel> generateDummyList(int numberOfProfiles) {
     var abstractDL = new List<ProfileModel>();
     String jpeg = '.JPEG';
 
@@ -58,10 +60,10 @@ class ListofProfiles {
       whatIDo: "play with flutter",
       whatImLookingFor: "my keys!",
       activitiesAndInterests: 'coding',
-      whereILive: 'hell',
+      whereILive: 'America!!',
     );
 
-    for (var i = 0; i < 146; i++) {
+    for (var i = 0; i < numberOfProfiles; i++) {
       abstractDL.add(ProfileModel(
         basicStats: BasicStatsModel(
           age: randomAge().toString(),
@@ -71,6 +73,7 @@ class ListofProfiles {
           weight: '145 lbs',
           bodyHair: 'Some Hair',
         ),
+        profileID: i.toString(),
         displayName: 'Profile #$i',
         customPersonalInfo: cpim,
         distance: (randomImage() / 10),

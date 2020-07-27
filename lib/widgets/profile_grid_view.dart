@@ -37,7 +37,7 @@ class _CustomGridViewState extends State<CustomGridView> {
     }
   }
 
-  List<ProfileModel> tmp = ListofProfiles.generateDummyList();
+  List<ProfileModel> tmp = ListofProfiles.generateDummyList(145);
   InkWell tileFactory(ProfileModel oneModel, int i) {
     return InkWell(
       onTap: () => Navigator.push(

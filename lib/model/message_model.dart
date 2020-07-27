@@ -6,7 +6,7 @@ class Message {
   ProfileModel me;
   String time;
   String text;
-  bool unread;
+  //bool unread;
   int chatID;
 
   int get getChatID => chatID;
@@ -18,7 +18,7 @@ class Message {
     this.sender,
     this.time,
     this.text,
-    this.unread,
+    //this.unread,
     this.chatID,
   });
 }

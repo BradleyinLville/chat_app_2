@@ -11,6 +11,7 @@ import 'sex_and_safety_model.dart';
 
 @JsonSerializable()
 class ProfileModel {
+  String profileID;
   String displayName;
   //! Add a method to determine the distance using a geolocation service
   double distance;
@@ -26,6 +27,7 @@ class ProfileModel {
 
   @JsonSerializable()
   ProfileModel({
+    this.profileID,
     this.displayName,
     this.distance,
     this.imageThumbnails,

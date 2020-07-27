@@ -10,7 +10,7 @@ class ListViewTester extends StatefulWidget {
 }
 
 class _ListViewTesterState extends State<ListViewTester> {
-  List<ProfileModel> tmp = ListofProfiles.generateDummyList();
+  List<ProfileModel> tmp = ListofProfiles.generateDummyList(145);
 
   @override
   Widget build(BuildContext context) {
